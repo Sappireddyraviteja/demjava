@@ -5,12 +5,12 @@ node {
     }
     
     stage('Build'){
-        sh "${mvnHome}/bin/mvn clean install -f demjava/pom.xml"
+        sh "${mvnHome}/bin/mvn clean install demjava/pom.xml"
     }
     
     stage('Code quality'){
         withSonarQubeEnv('SonarQube'){
-            sh "${mvnHome}/bin/mvn clean install -f demjava/pom.xml"
+            sh "${mvnHome}/bin/mvn clean install demjava/pom.xml"
         }
     }
 }
